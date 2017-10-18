@@ -17,7 +17,6 @@ public class EndSubscriberTest {
         EndSubscriber<String> subscriber = new EndSubscriber<>();
         publisher.subscribe(subscriber);
         List<String> items = List.of("1", "x", "2", "x", "3", "x");
-        subscriber.consumedElements = items; //이걸 빼면 실패함. 샘플에는 이거 없이도 동작하는데...
 
         // when
         assertThat(publisher.getNumberOfSubscribers()).isEqualTo(1);
