@@ -1,6 +1,6 @@
 # Reactive Programming with JDK 9 Flow API
 
-Oracle 공식 문서를 번역하였음
+[Oracle 공식 문서](https://community.oracle.com/docs/DOC-1006738)를 번역 (진행 중..)
 
 ### 리액티브 프로그래밍이란?
 
