@@ -4,10 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Flow;
 
-public class EndSubscriber<T> implements Flow.Subscriber {
-
-    public List<T> consumedElements = new LinkedList<>();
+public class EndSubscriber<T> implements Flow.Subscriber<T> {
     private Flow.Subscription subscription;
+    public List<T> consumedElements = new LinkedList<>();
 
     @Override
     public void onSubscribe(Flow.Subscription subscription) {
@@ -16,14 +15,14 @@ public class EndSubscriber<T> implements Flow.Subscriber {
     }
 
     @Override
-    public void onNext(Object item) {
+    public void onNext(T item) {
         System.out.println("Got : " + item);
         subscription.request(1);
     }
 
     @Override
-    public void onError(Throwable throwable) {
-        throwable.printStackTrace();
+    public void onError(Throwable t) {
+        t.printStackTrace();
     }
 
     @Override

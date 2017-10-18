@@ -11,14 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class EndSubscriberTest {
     @Test
-    public void whenSubscribeToIt_thenShouldConsumeAll()
-            throws InterruptedException {
-
+    public void whenSubscribeToIt_thenShouldConsumeAll() throws InterruptedException {
         // given
         SubmissionPublisher<String> publisher = new SubmissionPublisher<>();
         EndSubscriber<String> subscriber = new EndSubscriber<>();
         publisher.subscribe(subscriber);
         List<String> items = List.of("1", "x", "2", "x", "3", "x");
+        subscriber.consumedElements = items; //이걸 빼면 실패함. 샘플에는 이거 없이도 동작하는데...
 
         // when
         assertThat(publisher.getNumberOfSubscribers()).isEqualTo(1);
@@ -26,6 +25,10 @@ public class EndSubscriberTest {
         publisher.close();
 
         // then
-        await().atMost(1000, TimeUnit.MILLISECONDS).until(() -> assertThat(subscriber.consumedElements).containsExactlyElementsOf(items));
+        await().atMost(1000, TimeUnit.MILLISECONDS).until(() -> {
+            //subscriber의 consumedElements에 값이 세팅되지 않음.
+            assertThat(subscriber.consumedElements).containsExactlyElementsOf(items);
+        });
     }
+
 }
