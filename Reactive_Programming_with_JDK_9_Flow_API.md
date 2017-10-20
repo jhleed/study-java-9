@@ -1,5 +1,7 @@
 # Reactive Programming with JDK 9 Flow API 번역
 
+※ 수정된 버전은 [개인 블로그의 포스팅](http://jhleed.tistory.com/99)에 제일 먼저 반영됩니다.
+
 이 문서는 [오라클 커뮤니티 문서](https://community.oracle.com/docs/DOC-1006738)를 개인 공부 목적으로 일부 번역한 내용을 공유하는 것입니다. 오역이나 번역이 매끄럽지 않을 수 있습니다. 잘못된 부분이 있다면 피드백 바랍니다.
 (하단의 `Processor` 파트는 아직 학습하지 않은 관계로 번역을 하지 않았습니다.)
 Publisher를 게시자로 번역하였고, Subscriber를 구독자로 번역하였습니다. 중간에 용어가 종종 혼용됩니다.
